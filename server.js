@@ -27,6 +27,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // App Configuration
 app.use(bodyparser.json());
 app.use(cors());
+app.use(passport.initialize());
 app.use("/auth", auth);
 app.use("/admin", admin);
 app.use("/properties", properties);
@@ -37,4 +38,5 @@ app.get("/", requireAuth, (req, res) => {
   res.send("Byarent App");
 });
 
+// Start server
 app.listen(8000, () => console.log("Server running on port 8000"));

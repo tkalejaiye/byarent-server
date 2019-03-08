@@ -50,7 +50,7 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
 
     // User doesn't exist
     if (!user) {
-      return done(null, false);
+      return done(null, false, { message: "User doesn't exist" });
     }
 
     // User found, compare passwords
@@ -61,7 +61,7 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
 
       // Passwords do not match
       if (!isMatch) {
-        return done(null, false);
+        return done(null, false, { message: "Passwords don't match" });
       }
 
       return done(null, user);

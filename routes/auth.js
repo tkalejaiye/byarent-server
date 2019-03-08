@@ -10,11 +10,12 @@ const requireSignin = passport.authenticate("local", { session: false });
 // =============
 
 // Login route
-router.post("/login", requireSignin, authController.login);
+router.post("/login", authController.login);
 
 // Signup route
 router.post("/signup", authController.signup);
 
-router.post("/logout", authController.logout);
+// Log out route
+router.get("/logout", authController.logout);
 
 module.exports = router;
