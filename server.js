@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
+const dotenv = require("dotenv").config();
 
 // Import Routes
 const auth = require("./routes/auth");
@@ -16,9 +17,9 @@ const passport = require("passport");
 const requireAuth = passport.authenticate("jwt", { session: false });
 
 // DB Setup
-const mongoDB = "mongodb://127.0.0.1/byarent_db";
+//const mongoDB = "mongodb://127.0.0.1/byarent_db";
 mongoose.set("useCreateIndex", true);
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(process.env.mongodburi, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 var db = mongoose.connection;
