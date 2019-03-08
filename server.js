@@ -35,9 +35,11 @@ app.use("/properties", properties);
 app.use("/orders", orders);
 
 // Home page
-app.get("/", requireAuth, (req, res) => {
+app.get("/", (req, res) => {
   res.send("Byarent App");
 });
 
 // Start server
-app.listen(8000, () => console.log("Server running on port 8000"));
+app.listen(process.env.PORT || 8000, () =>
+  console.log("Server running on port 8000")
+);
